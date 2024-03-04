@@ -35,6 +35,14 @@ async function apiRequest() {
     const response = await fetch(getURL(searchValue));    
     const data = await response.json(); 
     renderImages(data);
+
+    const imageItem = document.querySelectorAll('.gallery__image');
+    imageItem.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            openModal(data, index);
+        })
+    })
+
   } catch (error) {
     console.log(error);
   }
@@ -44,7 +52,32 @@ function renderImages(data) {
   for (let i = 0; i < data.results.length; i++) {   
     let image = document.createElement('li');
     image.className = "gallery__image";
-    image.style.backgroundImage = `url("${data.results[i].urls.raw}")`;
+    image.style.backgroundImage = `url("${data.results[i].urls.regular}")`;
     gallery.appendChild(image);
   }  
 }
+
+// открытие модального окна с картинкой
+const modal = document.querySelector('.modal');
+const modalContainer = document.querySelector('.modal__container');
+
+function openModal(data, index) {
+    modal.classList.add('modal--active');
+    modalContainer.style.backgroundImage = `url(${data.results[index].urls.regular})`;
+};
+
+function closeModal() {
+    modal.classList.remove('modal--active');
+};
+
+window.addEventListener('click', (evt) => {
+    if (!modalContainer.contains(evt.target) && modal.contains(evt.target)) {
+        closeModal()
+    }
+});
+
+document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+        closeModal();
+    }
+});
