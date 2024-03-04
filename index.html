@@ -5,9 +5,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Image Gallery</title>
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+  <header class="header">
+    <div class="container header__container">
+      <h1 class="title">Unsplash API</h1>
+
+      <div class="search">
+        <input class="search__input" type="search" placeholder="Search..." autocomplete="off" autofocus>
+        <button class="search__button" type="button"></button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+    <section>
+      <div class="container">
+        <ul class="gallery"></ul>
+      </div>
+    </section>
+
+    <div class="modal">
+      <div class="modal__container"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__container">
+      <a class="footer__logo" href="https://rs.school/js/" target="_blank">
+        <img src="images/rs_school_logo.svg" alt="The Rolling Scopes school logo">
+      </a>
+      <span class="footer__text">2024</span>
+
+      <a href="https://github.com/almazka-code" target="_blank">
+        <img class="icon" src="images/github.png" alt="Link to GitHub">
+      </a>
+
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
 
 </body>
 
