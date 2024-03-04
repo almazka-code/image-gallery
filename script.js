@@ -24,7 +24,7 @@ function removeImages() {
 }
 
 function getURL(search = 'cat') {
-  return `https://api.unsplash.com/search/photos?query=${search}&per_page=9&orientation=landscape&client_id=OGdX3wroDUy9hAv7K-hesXcIPmZqajFvPSuZFAFTlrw`;
+  return `https://api.unsplash.com/search/photos?query=${search}&per_page=12&orientation=landscape&client_id=OGdX3wroDUy9hAv7K-hesXcIPmZqajFvPSuZFAFTlrw`;
 }
 
 async function apiRequest() {
@@ -34,13 +34,13 @@ async function apiRequest() {
     }
     const response = await fetch(getURL(searchValue));    
     const data = await response.json(); 
-    loadImages(data);
+    renderImages(data);
   } catch (error) {
     console.log(error);
   }
 }
 
-function loadImages(data) {
+function renderImages(data) {
   for (let i = 0; i < data.results.length; i++) {   
     let image = document.createElement('li');
     image.className = "gallery__image";
